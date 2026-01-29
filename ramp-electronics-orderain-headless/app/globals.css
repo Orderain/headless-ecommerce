@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+
+/* 🌈 Themed horizontal scrollbar */
+.scrollbar-theme {
+  scrollbar-width: thin;
+  scrollbar-color: #4B2050 transparent;
+}
+
+/* Chrome / Edge / Safari */
+.scrollbar-theme::-webkit-scrollbar {
+  height: 8px; /* horizontal scrollbar height */
+}
+
+.scrollbar-theme::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-theme::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    135deg,
+    #2C0741,
+    #4B2050,
+    #6348A6
+  );
+  border-radius: 999px;
+}
+
+.scrollbar-theme::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    135deg,
+    #4B2050,
+    #6348A6
+  );
+}
+/* Container helps manage the speed and layout */
+.marquee-container {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 30s linear infinite;
+}
+
+/* Pause on hover for better UX */
+.marquee-container:hover {
+  animation-play-state: paused;
+}
+
+/* The actual animation logic */
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Moves the text left. -50% works perfectly when content is duplicated */
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive adjustment: Faster scroll on small screens if needed */
+@media (max-width: 640px) {
+  .marquee-container {
+    animation-duration: 20s;
+  }
+}
+
+/* Toast notification slide-in animation */
+@keyframes slide-in {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
